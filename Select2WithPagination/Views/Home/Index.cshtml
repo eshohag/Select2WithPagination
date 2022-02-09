@@ -23,7 +23,7 @@
             <p>For improved performance with large data sets (500 000 items) within Few Seconds!</p>
         </div>
         <input id="test" style="width:100%;" placeholder="Type a number, scroll for more results" /><br />
-        <button id="SetDefaultValue">Set Default Value</button><br />
+        <button id="SetDefaultValue">Set Default Value</button>
         <button id="DisplayValue">Display Value</button>
     </div>
 
@@ -34,20 +34,14 @@
     <script src="~/Scripts/lodash.min.js"></script>
     <script src="~/Scripts/select2.min.js"></script>
     <script>
-        (function () {
+        $(document).ready(function () {
 
             $("#SetDefaultValue").click(function () {
                 //$('#test').val([1, 2, 3]).change();
                 //$("#test").val(5).trigger('change');
                 //$("#test").val(["1", "2", "4"]).trigger("change"); //CA doesn't show as a default
 
-                
-                $("#test").select2('data',
-                    [
-                        { id: "1", text: "Test Data-1" },
-                        { id: "4", text: "Test Data-4" },
-                    ]
-                );
+
 
 
             });
@@ -59,7 +53,7 @@
 
             function mockData() {
                 var datalos = '@ViewBag.Data'.replace(/\&quot;/g, '"');
-                console.log(datalos);
+                //console.log(datalos);
                 return JSON.parse(datalos);
             }
 
@@ -71,7 +65,6 @@
                 tags: true,
                 // query with pagination
                 query: function (q) {
-                    debugger;
                     var pageSize,
                         results,
                         that = this;
@@ -84,7 +77,6 @@
                             return e.text.toUpperCase().indexOf(q.term.toUpperCase()) >= 0;
                         });
                     } else if (q.term === '') {
-                        debugger;
                         results = that.data;
                     }
                     q.callback({
@@ -94,7 +86,16 @@
                     });
                 },
             });
-        })();
+
+            var defaultValue = '@ViewBag.DefaultList'.replace(/\&quot;/g, '"');
+            console.log(defaultValue);
+            $("#test")
+                .select2('data', JSON.parse(defaultValue))
+                .click();
+
+
+
+        });
     </script>
 </body>
 </html>

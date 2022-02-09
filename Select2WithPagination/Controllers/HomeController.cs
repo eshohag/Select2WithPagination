@@ -11,12 +11,14 @@ namespace Select2WithPagination.Controllers
         {
             var list = new List<DropdownList>();
 
-            for (int i = 0; i < 500000; i++)
+            for (int i = 0; i < 200; i++)
             {
                 list.Add(new DropdownList() { id = i, text = "Test Data-" + i });
             }
+            var defaultList = list.FindAll(x => x.id > 5 && x.id < 11).ToArray();
 
             ViewBag.Data = JsonConvert.SerializeObject(list);
+            ViewBag.DefaultList = JsonConvert.SerializeObject(defaultList);
             return View(list);
         }
 
