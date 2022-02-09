@@ -4,42 +4,30 @@
     Layout = null;
 }
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css" />
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/select2-bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
         <div class="page-header">
-            <h1>select2 with pagination</h1>
-            <p>for improved performance with large data sets (20 000 items)</p>
+            <h1>Select2 with pagination</h1>
+            <p>For improved performance with large data sets (500 000 items) within Few Seconds!</p>
         </div>
         <input id="test" style="width:100%;" placeholder="Type a number, scroll for more results" />
-        <button id="btnSubmit">Button</button>
     </div>
 
     <!--[if gte IE 9]><!-->
     <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <!--<![endif]-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
-    @*<script src="~/Scripts/Style.js"></script>*@
-
-<script>
-        // For demonstration purposes we first make
-        // a huge array of demo data (20 000 items)
-        // HEADS UP; for the _.map function i use underscore (actually lo-dash) here
-    (function () {
-
-        $("#btnSubmit").click(function () {
-            var vdos = $("#test").val();
-            alert(vdos);
-        });
+    <script src="~/Scripts/lodash.min.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        (function () {
 
             function mockData() {
                 var datalos = '@ViewBag.Data'.replace(/\&quot;/g, '"');
@@ -78,8 +66,7 @@
                 },
             });
         })();
-
-</script>
+    </script>
 </body>
 </html>
 
