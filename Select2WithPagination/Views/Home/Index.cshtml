@@ -41,14 +41,14 @@
                 //$("#test").val(5).trigger('change');
                 //$("#test").val(["1", "2", "4"]).trigger("change"); //CA doesn't show as a default
 
-                var selectedArray = "1,2,4".split(',');
-                $("#test").select2({
-                    multiple: true,
-                    tags: true,
-                    tokenSeparators: [',', ' '],
-                    width: '100%'
-                });
-                $("#test").val(selectedArray).trigger("change");
+                
+                $("#test").select2('data',
+                    [
+                        { id: "1", text: "Test Data-1" },
+                        { id: "4", text: "Test Data-4" },
+                    ]
+                );
+
 
             });
             $("#DisplayValue").click(function () {
