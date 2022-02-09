@@ -18,7 +18,9 @@
             <h1>Select2 with pagination</h1>
             <p>For improved performance with large data sets (500 000 items) within Few Seconds!</p>
         </div>
-        <input id="test" style="width:100%;" placeholder="Type a number, scroll for more results" />
+        <input id="test" style="width:100%;" placeholder="Type a number, scroll for more results" /><br />
+        <button id="SetDefaultValue">Set Default Value</button><br />
+        <button id="DisplayValue">Display Value</button>
     </div>
 
     <!--[if gte IE 9]><!-->
@@ -28,6 +30,19 @@
     <script src="~/Scripts/select2.min.js"></script>
     <script>
         (function () {
+
+            $("#SetDefaultValue").click(function () {
+                //$('#test').val([1, 2, 3]).change();
+                //$("#test").val(5).trigger('change');
+                $("#test").val(["1", "2", "4"]).trigger("change"); //CA doesn't show as a default
+
+
+            });
+            $("#DisplayValue").click(function () {
+                var vdos = $("#test").val();
+                alert(vdos);
+            });
+
 
             function mockData() {
                 var datalos = '@ViewBag.Data'.replace(/\&quot;/g, '"');
@@ -40,6 +55,7 @@
                 data: mockData(),
                 placeholder: 'search',
                 multiple: true,
+                tags: true,
                 // query with pagination
                 query: function (q) {
                     debugger;
